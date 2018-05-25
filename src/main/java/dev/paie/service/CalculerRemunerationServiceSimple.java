@@ -49,12 +49,12 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		BigDecimal TOTAL_RETENUE_IMPO = new BigDecimal(0);
 		for (Cotisation cotisation2 : cotisationsImposables) {
 			if(cotisation2.getTauxSalarial()!=null){
-				TOTAL_RETENUE_IMPO = TOTAL_RETENUE_IMPO.add(cotisation2.getTauxSalarial());
+				TOTAL_RETENUE_IMPO = TOTAL_RETENUE_IMPO.add(cotisation2.getTauxSalarial().multiply(new BigDecimal(SALAIRE_BRUT)));
 			}
 		}
 		
-		String total_retenu_impo= paieUtils.formaterBigDecimal(TOTAL_RETENUE_IMPO = TOTAL_RETENUE_IMPO.multiply(new BigDecimal(SALAIRE_BRUT)));
-		String NET_A_PAYER =paieUtils.formaterBigDecimal( new BigDecimal(NET_IMPOSABLE).subtract(new BigDecimal(total_retenu_impo)) );
+		
+		String NET_A_PAYER =paieUtils.formaterBigDecimal( new BigDecimal(NET_IMPOSABLE).subtract(TOTAL_RETENUE_IMPO) );
 
 		ResultatCalculRemuneration remuneration = new ResultatCalculRemuneration();
 		String netAPayer = NET_A_PAYER;

@@ -16,13 +16,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourceMySQLConfig;
+import dev.paie.config.H2Config;
 import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 import dev.paie.service.GradeService.GradeService;
 
 //TODO compléter la configuration
-@ContextConfiguration (classes = { ServicesConfig.class ,DataSourceMySQLConfig.class ,JeuxDeDonneesConfig.class})
+@ContextConfiguration (classes = {ServicesConfig.class  ,JeuxDeDonneesConfig.class, H2Config.class})
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
 
@@ -46,4 +47,4 @@ public class GradeServiceJdbcTemplateTest {
 	 assertThat(lister.contains(grade));
 	 
  }
-}
+}  

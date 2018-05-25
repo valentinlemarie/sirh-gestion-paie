@@ -52,6 +52,14 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>1.4.197</version>
+		    <scope>test</scope>
+		</dependency>
+		
 		
 		<!-- exemple de connecteur jdbc -->
 		<dependency>
