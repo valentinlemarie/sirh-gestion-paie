@@ -2,6 +2,9 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 public class BulletinSalaire {
 	
 	private Integer id;

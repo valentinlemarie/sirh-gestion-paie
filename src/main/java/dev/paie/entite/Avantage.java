@@ -2,12 +2,30 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Avantage {
 
+	@Id
 	private Integer id;
 	private String code;
 	private String nom;
 	private BigDecimal montant;
+
+	
+	public Avantage() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Avantage(Integer id, String code, String nom, BigDecimal montant) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.nom = nom;
+		this.montant = montant;
+	}
 
 	public String getCode() {
 		return code;
