@@ -47,7 +47,18 @@
 		<dependency>
 			    <groupId>org.springframework</groupId>
 			    <artifactId>spring-test</artifactId>
-			</dependency>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		</dependency>
+		
+		<!-- exemple de connecteur jdbc -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.41</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
         <dependencies>
