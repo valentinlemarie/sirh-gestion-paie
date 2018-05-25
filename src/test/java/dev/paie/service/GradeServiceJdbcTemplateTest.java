@@ -23,7 +23,7 @@ import dev.paie.entite.Grade;
 import dev.paie.service.GradeService.GradeService;
 
 //TODO compléter la configuration
-@ContextConfiguration (classes = {ServicesConfig.class  ,JeuxDeDonneesConfig.class, H2Config.class})
+@ContextConfiguration (classes = {GradeServiceJdbcTemplate.class,H2Config.class  ,JeuxDeDonneesConfig.class})
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
 
