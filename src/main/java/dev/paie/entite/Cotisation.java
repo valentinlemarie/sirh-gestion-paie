@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="Cotisation")
 public class Cotisation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

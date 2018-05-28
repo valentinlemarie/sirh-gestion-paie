@@ -1,10 +1,14 @@
 package dev.paie.entite;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 public class RemunerationEmploye {
-	
 	private Integer id;
 	private String matricule;
+	
 	private Entreprise entreprise;
+	
 	private ProfilRemuneration profilRemuneration;
 	private Grade grade;
 	

@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import dev.paie.entite.Avantage;
+import dev.paie.entite.Cotisation;
 
-public interface AvantageRepository extends JpaRepository<Avantage, Integer> {
-	public List<Avantage> findByCode (String code);
+public interface CotisationRepository extends JpaRepository<Cotisation, Integer>{
+	
 }

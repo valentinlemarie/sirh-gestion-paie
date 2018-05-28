@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
 
-@Service
+
 @Transactional
 public class CotisationServiceJpa implements CotisationService {
 
