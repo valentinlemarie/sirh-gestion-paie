@@ -13,14 +13,14 @@ public class H2Config {
 
     @Bean
     public DataSource datasource() {
-        /*
+        
          return new EmbeddedDatabaseBuilder()
             .setType(EmbeddedDatabaseType.H2)
             .addScript("schema.sql")
             .build();
             
-    	*/
     	
+    	/*
     	 DriverManagerDataSource dataSource = new    DriverManagerDataSource();
     	 
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -28,6 +28,6 @@ public class H2Config {
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
-        
+        */
     }
 }
