@@ -77,10 +77,9 @@ public class InitialiserDonneesService implements DonneesService{
 		for (int i = 1; i < 12; i++) {
 			Periode periode = new Periode();
 			LocalDate initial = LocalDate.of(annee, i, 1);
-			LocalDate start = initial.withDayOfMonth(1);
 			LocalDate end = initial.withDayOfMonth(initial.lengthOfMonth());
 			periode.setId(i);
-			periode.setDateDebut(start);
+			periode.setDateDebut(initial);
 			periode.setDateFin(end);
 			periodes.add(periode);
 		}
