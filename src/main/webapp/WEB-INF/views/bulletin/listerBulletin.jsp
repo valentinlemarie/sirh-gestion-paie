@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Employes</title>
+<title>Bulletin</title>
 <script src="<c:url value='bootstrap/js/bootstrap.js'  />" ></script>
 <link href="<c:url value='/bootstrap/css/bootstrap.css' />"   rel="stylesheet" media="screen">
 </head>
@@ -19,30 +19,40 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active "><a class="nav-link" href="<c:url value='../employes/lister'/>">Employés
-						<span class="sr-only">(current)</span>
+				<li class="nav-item  "><a class="nav-link" href="<c:url value='../employes/lister'/>">Employés
+						
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='../bulletin/lister'/>">Bulletins</a>
+				<li class="nav-item active"><a class="nav-link" href="<c:url value='../bulletin/lister'/>">Bulletins</a>
 				</li>
 
 			</ul>
 		</div>
 	</nav>
+
+	<h1>Ajouter un Bulletin</h1>
 	<div class="text-right">
-     	 <a href="creer" class=" btn btn-info">Ajouter un nouveau Employe</a>
+     	 <a href=creer class=" btn btn-info">Ajouter un nouveau Bulletin</a>
     </div>
 	<h1>List des employés</h1>
 
 	<table class="table">
 		<tr>
 			<th>Date/heure création</th>
-			<th>Matricule </th>
-			<th>Grade</th>
+			<th>Période </th>
+			<th>Matricule</th>
+			<th>Salaire Brut</th>
+			<th>Net Impossable</th>
+			<th>Net a Payer</th>
+			<th>Actions</th>
 		</tr>
-		<c:forEach items="${employes}" var="col" >
-			<td> <c:out value="${col.dateCreation}"></c:out> </td>
-			<td> <c:out value="${col.matricule}" ></c:out> </td>
-			<td> <c:out value="${col.grade}"></c:out>	
+		<c:forEach items="${calcul}" var="col" >
+			<td> <c:out value="${col.key.dateCreation}"></c:out> </td>
+			<td> <c:out value="${col.key.periode}" ></c:out> </td>
+			<td> <c:out value="${col.key.remunerationEmploye.matricule}"></c:out></td>
+			<td> <c:out value="${col.value.salaireBrut}"></c:out></td>
+			<td> <c:out value="${col.value.netImposable}"></c:out> </td>
+			<td><c:out value="${col.value.netAPayer}"></c:out></td>
+			<td> action </td>
 		</c:forEach>
 	
 	</table>

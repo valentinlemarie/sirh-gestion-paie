@@ -31,17 +31,7 @@ public class RemunerationEmployeController {
 	
 	@Autowired RemunerationEmployeRepository remunerationEmployeRepository;
 	
-   /* @RequestMapping(method = RequestMethod.GET, path = "/creer")
-    public ModelAndView creerEmploye() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("employes/creerEmploye");
-        mv.addObject("prefixMatricule","M00");
-        mv.addObject("grade",gradeRepository.findAll());
-        mv.addObject("entreprise",entrepriseRepository.findAll());
-        mv.addObject("profilRemuneration",profilRepository.findAll());
-        return mv;
-    }
-    */
+  
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
     public String setupFormList(Model model) {
         //Liaison du modèle et de l'objet.

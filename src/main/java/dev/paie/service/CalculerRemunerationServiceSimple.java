@@ -4,18 +4,32 @@ import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.ResultatCalculRemuneration;
+import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.util.PaieUtils;
 
+@Transactional
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
 	private PaieUtils paieUtils  = new PaieUtils();
+	@Autowired
+	private BulletinSalaireRepository bulletinSalaireRepository ;
 
+	public Map<BulletinSalaire,ResultatCalculRemuneration> bulletin(){
+		Map<BulletinSalaire,ResultatCalculRemuneration> resultat = new HashMap<>() ;
+		for (BulletinSalaire bulletin : bulletinSalaireRepository.findAll()) {
+			resultat.put(bulletin,calculer(bulletin));
+		}
+		return resultat;
+	}
+	
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		// TODO Auto-generated method stub

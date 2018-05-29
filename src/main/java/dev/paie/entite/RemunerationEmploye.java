@@ -2,6 +2,7 @@ package dev.paie.entite;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.Set;
 import java.util.TimeZone;
 
 import javax.persistence.Entity;
@@ -27,6 +28,11 @@ public class RemunerationEmploye {
 	
 	@ManyToOne
 	private Grade grade;
+	
+	
+	@OneToMany(mappedBy="remunerationEmploye")
+	Set<BulletinSalaire> bulletinSalaires;
+	
 	
 	ZonedDateTime dateCreation ;
 	

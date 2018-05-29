@@ -1,11 +1,13 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Periode {
@@ -15,6 +17,9 @@ public class Periode {
 	
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
+	
+	@OneToMany (mappedBy="periode")
+	Set<BulletinSalaire> bulletinSalaires;
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;
@@ -35,6 +40,11 @@ public class Periode {
 		this.id = id;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getDateDebut()+" "+getDateFin();
+	}
 	
 	
 	
