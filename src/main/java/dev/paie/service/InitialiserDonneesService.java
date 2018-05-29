@@ -3,6 +3,7 @@ package dev.paie.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.CotisationRepository;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -41,7 +43,6 @@ public class InitialiserDonneesService implements DonneesService{
 	@Autowired private ProfilRemunerationRepository repoProfilRemuneration;
 	@Autowired private PeriodeRepository repoPeriode;
 	
-	
 	public void initialiser() {
 		// TODO Auto-generated method stub
 		 
@@ -59,6 +60,11 @@ public class InitialiserDonneesService implements DonneesService{
 		for (Periode periode : periodes) {
 			repoPeriode.save(periode);
 		}
+		for (ProfilRemuneration profilRemuneration : profilRemunerations) {
+			repoProfilRemuneration.save(profilRemuneration);
+		}
+			
+	
 		context.close();
 	}
 

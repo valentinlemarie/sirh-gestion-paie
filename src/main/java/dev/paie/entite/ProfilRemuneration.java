@@ -1,11 +1,16 @@
 package dev.paie.entite;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -16,15 +21,28 @@ public class ProfilRemuneration {
 	private Integer id;
 	private String code;
 
-	@Transient
+	@ManyToMany
+	@JoinTable(name="nonImpossable",joinColumns =@JoinColumn(name="id_profil" ,referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name="id_coti_non", referencedColumnName="id"))
 	private List<Cotisation> cotisationsNonImposables;
 	
-	@Transient
+	@ManyToMany
+	@JoinTable(name="impossable",joinColumns =@JoinColumn(name="id_profil2" ,referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name="id_impo", referencedColumnName="id"))
 	private List<Cotisation> cotisationsImposables;
 	
 	@Transient
 	private List<Avantage> avantages;
 
+	@OneToMany(mappedBy="profilRemuneration")
+	private List<RemunerationEmploye> remuneration;
+	
+	
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getCode();
+	}
+	
 	public Integer getId() {
 		return id;
 	}

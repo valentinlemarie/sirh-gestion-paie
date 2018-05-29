@@ -1,12 +1,14 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,14 +17,12 @@ public class Cotisation {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column (name="code",length=50)
 	private String code;
-	@Column (name="lebelle",length=50)
 	private String libelle;
-	@Column (name="tauxSalarial",length=50)
 	private BigDecimal tauxSalarial;
-	@Column (name="tauxPatronal",length=50)
 	private BigDecimal tauxPatronal;
+	
+
 	
 	
 	public String getCode() {

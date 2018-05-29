@@ -1,20 +1,37 @@
 package dev.paie.entite;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Entreprise {
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String siret;
 	private String denomination;
 	private String adresse;
 	private String urssaf;
 	private String codeNaf;
+	
+	
+	@OneToMany(mappedBy="entreprise")
+	private List<RemunerationEmploye> employes;
+	
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getDenomination();
+	}
 	
 	public String getDenomination() {
 		return denomination;
