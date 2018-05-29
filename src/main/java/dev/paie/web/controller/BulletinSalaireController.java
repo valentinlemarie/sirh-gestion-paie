@@ -49,6 +49,8 @@ public class BulletinSalaireController {
 		// Renvoi du nom logique de la vue formulaire.
 		return "bulletin/listerBulletin";
 	}
+	
+	
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public String setupForm(Model model) {

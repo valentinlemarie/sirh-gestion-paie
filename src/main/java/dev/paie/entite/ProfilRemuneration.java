@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class ProfilRemuneration {
 	private Integer id;
 	private String code;
 
-	@ManyToMany
+	@ManyToMany (fetch=FetchType.EAGER)
 	@JoinTable(name="nonImpossable",joinColumns =@JoinColumn(name="id_profil" ,referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name="id_coti_non", referencedColumnName="id"))
 	private List<Cotisation> cotisationsNonImposables;
 	
