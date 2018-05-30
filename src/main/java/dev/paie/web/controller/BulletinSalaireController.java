@@ -1,5 +1,6 @@
 package dev.paie.web.controller;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.TimeZone;
@@ -8,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.fabric.xmlrpc.Client;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.RemunerationEmploye;
@@ -28,12 +31,13 @@ import dev.paie.service.CalculerRemunerationServiceSimple;
 @RequestMapping("/bulletin")
 public class BulletinSalaireController {
 
-	@Autowired
-	PeriodeRepository periodeRepository;
+	
 	@Autowired
 	EntrepriseRepository entrepriseRepository;
 	@Autowired
 	RemunerationEmployeRepository remunerationEmployeRepository;
+	@Autowired
+	PeriodeRepository periodeRepository;
 	
 	// Service de calcul des valeurs salaire
 	 @Autowired 
@@ -49,9 +53,22 @@ public class BulletinSalaireController {
 		// Renvoi du nom logique de la vue formulaire.
 		return "bulletin/listerBulletin";
 	}
-	
-	
 
+	@RequestMapping(path = "/lister/{id}", method = RequestMethod.GET)
+    public String bulletin(@PathVariable String id, Model model) {	
+		BulletinSalaire bulletin = bulletinSalaireRepository.findOne(Integer.parseInt(id));
+		BigDecimal travail = bulletin.getRemunerationEmploye().getGrade().getTauxBase();
+		BigDecimal jour = bulletin.getRemunerationEmploye().getGrade().getNbHeuresBase();
+		BigDecimal paye = travail.multiply(jour);
+		model.addAttribute("bulletinFiche",bulletin);
+		model.addAttribute("calcul",remunerationService.calculer(bulletin));
+		model.addAttribute("cotisationNonImpo",remunerationService.listeCotisationNonImpo(bulletin));
+		model.addAttribute("cotisationImpo",remunerationService.listeCotisationImpo(bulletin));
+		model.addAttribute("base", bulletin.getPrimeExceptionnelle().add(paye));
+		model.addAttribute("paye",paye);
+		return "bulletin/bulletin";
+    }
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public String setupForm(Model model) {
 		// Liaison du modèle et de l'objet.

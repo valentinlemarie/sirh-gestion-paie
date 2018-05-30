@@ -22,6 +22,15 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	@Autowired
 	private BulletinSalaireRepository bulletinSalaireRepository ;
 
+	
+	public List<Cotisation> listeCotisationNonImpo(BulletinSalaire bulletinSalaire){
+		return bulletinSalaire.getRemunerationEmploye().getProfilRemuneration().getCotisationsNonImposables();
+	}
+	
+	public List<Cotisation> listeCotisationImpo(BulletinSalaire bulletinSalaire){
+		return bulletinSalaire.getRemunerationEmploye().getProfilRemuneration().getCotisationsImposables();
+	}
+	
 	public Map<BulletinSalaire,ResultatCalculRemuneration> bulletin(){
 		Map<BulletinSalaire,ResultatCalculRemuneration> resultat = new HashMap<>() ;
 		for (BulletinSalaire bulletin : bulletinSalaireRepository.findAll()) {

@@ -10,9 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.fabric.xmlrpc.Client;
 
+import dev.paie.entite.Collegues;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -50,6 +53,13 @@ public class RemunerationEmployeController {
         model.addAttribute("entreprise",entrepriseRepository.findAll());
         model.addAttribute("grade",gradeRepository.findAll());
         model.addAttribute("profilRemuneration",profilRepository.findAll());
+        
+        
+        RestTemplate rt = new RestTemplate();
+        Collegues[] result = rt.getForObject("http://collegues-api.cleverapps.io/collegues", Collegues[].class);
+        model.addAttribute("collegues",result);
+        
+        
         //Renvoi du nom logique de la vue formulaire.
         return "employes/creerEmploye";
     }

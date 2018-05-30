@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.entite.Cotisation;
@@ -42,6 +43,7 @@ public class InitialiserDonneesService implements DonneesService{
 	@Autowired private GradeRepository repoGrade;
 	@Autowired private ProfilRemunerationRepository repoProfilRemuneration;
 	@Autowired private PeriodeRepository repoPeriode;
+	
 	
 	public void initialiser() {
 		// TODO Auto-generated method stub
@@ -77,10 +79,9 @@ public class InitialiserDonneesService implements DonneesService{
 		for (int i = 1; i < 12; i++) {
 			Periode periode = new Periode();
 			LocalDate initial = LocalDate.of(annee, i, 1);
-			LocalDate start = initial.withDayOfMonth(1);
 			LocalDate end = initial.withDayOfMonth(initial.lengthOfMonth());
 			periode.setId(i);
-			periode.setDateDebut(start);
+			periode.setDateDebut(initial);
 			periode.setDateFin(end);
 			periodes.add(periode);
 		}

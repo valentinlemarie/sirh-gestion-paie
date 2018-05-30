@@ -19,10 +19,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active "><a class="nav-link" href="<c:url value='../employes/lister'/>">Employés
+				<li class="nav-item active "><a class="nav-link" href="<c:url value='/mvc/employes/lister'/>">Employés
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='../bulletin/lister'/>">Bulletins</a>
+				<li class="nav-item"><a class="nav-link" href="<c:url value='/mvc/bulletin/lister'/>">Bulletins</a>
 				</li>
 
 			</ul>
@@ -40,7 +40,7 @@
 			<div class="form-group row">
 				<label for="validationTooltip01" class="col-sm-2 col-form-label">Matricule</label>
 				<div class="col-sm-4">
-					<form:input path="matricule" class="form-control" ></form:input>
+					<form:select path="matricule" class="form-control" items="${collegues}" ></form:select>
 				</div>
 			</div>
 			<div class="form-group row">

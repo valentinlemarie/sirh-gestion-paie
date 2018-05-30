@@ -23,7 +23,11 @@ public class Cotisation {
 	private BigDecimal tauxPatronal;
 	
 
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getCode()+" "+getLibelle();  
+	}
 	
 	public String getCode() {
 		return code;
