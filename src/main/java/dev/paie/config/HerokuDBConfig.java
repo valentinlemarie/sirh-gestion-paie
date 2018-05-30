@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+
 @Configuration
 public class HerokuDBConfig {
 

@@ -37,7 +37,7 @@ public class ProfilRemuneration {
 	private List<RemunerationEmploye> remuneration;
 	
 	
-	
+	 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
