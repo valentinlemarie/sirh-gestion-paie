@@ -50,7 +50,7 @@
 			<th>Taux Salarial</th>
 			<th>Montant Salarial</th>
 			<th>Taux Patronal</th>
-			<th>Cot patronales/th>
+			<th>Cot patronales</th>
 		</tr>
 		<tr>
 			<td> Salaire de Base </td>
@@ -95,7 +95,7 @@
 			<th>Taux Salarial</th>
 			<th>Montant Salarial</th>
 			<th>Taux Patronal</th>
-			<th>Cot patronales/th>
+			<th>Cot patronales</th>
 		</tr>
 		<c:forEach items="${cotisationNonImpo}" var="col" >
 		<tr>
@@ -126,7 +126,7 @@
 			<th>Taux Salarial</th>
 			<th>Montant Salarial</th>
 			<th>Taux Patronal</th>
-			<th>Cot patronales/th>
+			<th>Cot patronales</th>
 		</tr>
 		<c:forEach items="${cotisationImpo}" var="col" >
 		<tr>
