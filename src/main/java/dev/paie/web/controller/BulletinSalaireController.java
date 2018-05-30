@@ -31,13 +31,13 @@ import dev.paie.service.CalculerRemunerationServiceSimple;
 @RequestMapping("/bulletin")
 public class BulletinSalaireController {
 
-	@Autowired
-	PeriodeRepository periodeRepository;
+	
 	@Autowired
 	EntrepriseRepository entrepriseRepository;
 	@Autowired
 	RemunerationEmployeRepository remunerationEmployeRepository;
-	
+	@Autowired
+	PeriodeRepository periodeRepository;
 	
 	// Service de calcul des valeurs salaire
 	 @Autowired 

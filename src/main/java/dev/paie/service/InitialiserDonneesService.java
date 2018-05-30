@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.entite.Cotisation;
@@ -42,6 +43,7 @@ public class InitialiserDonneesService implements DonneesService{
 	@Autowired private GradeRepository repoGrade;
 	@Autowired private ProfilRemunerationRepository repoProfilRemuneration;
 	@Autowired private PeriodeRepository repoPeriode;
+	
 	
 	public void initialiser() {
 		// TODO Auto-generated method stub

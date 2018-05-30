@@ -40,7 +40,7 @@
 			<div class="form-group row">
 				<label for="validationTooltip01" class="col-sm-2 col-form-label">Matricule</label>
 				<div class="col-sm-4">
-					<form:input path="matricule" class="form-control" ></form:input>
+					<form:select path="matricule" class="form-control" items="${collegues}" ></form:select>
 				</div>
 			</div>
 			<div class="form-group row">

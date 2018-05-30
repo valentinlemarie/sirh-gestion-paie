@@ -31,7 +31,7 @@
 
 	<h1>Bulletin de Salaire</h1>
 	<div class="text-right">
-     	 <a href=creer class=" btn btn-info">Retour</a>
+     	 <a href="<c:url value='/mvc/bulletin/lister'></c:url>" class=" btn btn-info">Retour</a>
     </div>
 	<h2>Periode</h2>
 	<p> ${bulletinFiche.periode}</p>
@@ -140,8 +140,9 @@
 		</c:forEach>
 		
 		</table>
-	<h2>Net a Payer :${calcul.netAPayer }</h2>
-	
+		<div>
+			<h2 class="">Net a Payer :${calcul.netAPayer }</h2>
+		</div>
 	
 </body>
 </html>

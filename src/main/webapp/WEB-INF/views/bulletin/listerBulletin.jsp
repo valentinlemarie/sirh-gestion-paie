@@ -46,6 +46,7 @@
 			<th>Actions</th>
 		</tr>
 		<c:forEach items="${calcul}" var="col" >
+		<tr>
 			<td> <c:out value="${col.key.dateCreation}"></c:out> </td>
 			<td> <c:out value="${col.key.periode}" ></c:out> </td>
 			<td> <c:out value="${col.key.remunerationEmploye.matricule}"></c:out></td>
@@ -53,8 +54,9 @@
 			<td> <c:out value="${col.value.netImposable}"></c:out> </td>
 			<td><c:out value="${col.value.netAPayer}"></c:out></td>
 			<td> <a href="<c:url value='/mvc/bulletin/lister/${col.key.id }'></c:url>" >visualiser</a> </td>
+		</tr>
 		</c:forEach>
-	
+		
 	</table>
 
 	
