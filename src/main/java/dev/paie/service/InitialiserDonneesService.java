@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,11 +22,14 @@ import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
 import dev.paie.entite.RemunerationEmploye;
+import dev.paie.entite.Utilisateur;
+import dev.paie.entite.Utilisateur.ROLES;
 import dev.paie.repository.CotisationRepository;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
+import dev.paie.repository.UtilisateurRepository;
 
 
 @Service
@@ -43,13 +47,19 @@ public class InitialiserDonneesService implements DonneesService{
 	@Autowired private GradeRepository repoGrade;
 	@Autowired private ProfilRemunerationRepository repoProfilRemuneration;
 	@Autowired private PeriodeRepository repoPeriode;
+	@Autowired private PasswordEncoder passwordEncoder;
+	@Autowired private UtilisateurRepository utilisateurs;
 	
-	
+	@Override
+	@Transactional
 	public void initialiser() {
 		// TODO Auto-generated method stub
-		 
-		
-		setPeriodes();
+		String iciUnMotDePasse = "formation";
+        String iciMotDePasseHashe = this.passwordEncoder.encode(iciUnMotDePasse);
+        
+        utilisateurs.save(new Utilisateur("valentin",iciMotDePasseHashe,true,ROLES.ROLE_UTILISATEUR));
+        utilisateurs.save(new Utilisateur("patron",iciMotDePasseHashe,true,ROLES.ROLE_ADMINISTRATEUR));
+        setPeriodes();
 		for (Cotisation cotisation : cotisations) {
 			repoCotisation.save(cotisation);
 		}

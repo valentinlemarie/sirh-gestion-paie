@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.service.CalculerRemunerationServiceSimple;
+import dev.paie.service.DonneesService;
 import dev.paie.service.InitialiserDonneesService;
 import dev.paie.util.PaieUtils;
 
@@ -15,7 +16,7 @@ import dev.paie.util.PaieUtils;
 public class StartUpAppListener {
 
     @Autowired
-    private InitialiserDonneesService initService;
+    private DonneesService initService;
 
     @EventListener(ContextRefreshedEvent.class)
     public void contextRefreshedEvent() {
