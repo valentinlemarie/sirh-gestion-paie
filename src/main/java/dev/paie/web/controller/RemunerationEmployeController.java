@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,6 +36,7 @@ public class RemunerationEmployeController {
 	
   
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
     public String setupFormList(Model model) {
         //Liaison du modèle et de l'objet.
 		model.addAttribute("employes", remunerationEmployeRepository.findAll());
@@ -47,6 +49,7 @@ public class RemunerationEmployeController {
     
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
     public String setupForm(Model model) {
         //Liaison du modèle et de l'objet.
     	model.addAttribute("employe", new RemunerationEmploye());
@@ -65,6 +68,7 @@ public class RemunerationEmployeController {
     }
     
     @RequestMapping( method = RequestMethod.POST , path ="/creer")
+    @Secured("ROLE_ADMINISTRATEUR")
     public String submitForm(@ModelAttribute("employe") RemunerationEmploye employe) {
     	employe.setDateCreation(ZonedDateTime.now());
     	remunerationEmployeRepository.save(employe);
